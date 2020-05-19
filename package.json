@@ -1,0 +1,37 @@
+{
+  "name": "speech-recognition-evaluation",
+  "version": "0.0.1",
+  "description": "Command line utility to evaluate Automated Speech Recognition (ASR) systems",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/symblai/speech-recognition-evaluation.git"
+  },
+  "keywords": [
+    "speech",
+    "speech recognition",
+    "asr",
+    "automated speech recognition",
+    "speech to text",
+    "word error rate",
+    "wer",
+    "tool",
+    "utility",
+    "command line"
+  ],
+  "author": "toshish@symbl.ai",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/symblai/speech-recognition-evaluation/issues"
+  },
+  "homepage": "https://github.com/symblai/speech-recognition-evaluation#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "diff": "^4.0.2"
+  }
+}
