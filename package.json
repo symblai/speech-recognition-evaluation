@@ -1,6 +1,6 @@
 {
   "name": "speech-recognition-evaluation",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Command line utility to evaluate Automated Speech Recognition (ASR) systems",
   "main": "index.js",
   "directories": {
