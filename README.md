@@ -24,7 +24,7 @@ Make sure that you have [NodeJS v8+](https://nodejs.org/en/download/) installed 
 
 ## Installation
 ```bash
-npm install -g asr-eval
+npm install -g speech-recognition-evaluation
 ```
 Verify installation by simply running:
 ```bash
