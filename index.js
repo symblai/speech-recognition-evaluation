@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const {calculateFromFile, printResult} = require('./lib/benchmark');
 
 const commandLineArgs = require('command-line-args');

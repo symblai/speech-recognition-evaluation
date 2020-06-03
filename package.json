@@ -6,6 +6,9 @@
   "directories": {
     "lib": "lib"
   },
+  "bin": {
+    "asr-eval": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/symblai/speech-recognition-evaluation.git"
