@@ -93,3 +93,8 @@ Options
                               useful if evaluation needs to be done in case-insensitive way.                
   -h, --help                  Print this usage guide.                              
 ```
+
+## Getting help
+If you need help installing or using the utility, please give a shout out in our [slack channel](https://symbldotai.slack.com/join/shared_invite/zt-4sic2s11-D3x496pll8UHSJ89cm78CA)
+
+If you've instead found a bug or would like new features added, go ahead and open issues or pull requests against this repo!
