@@ -52,83 +52,93 @@ const printUsage = (errors = []) => {
                 {
                     name: 'wer',
                     alias: 'e',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: true. Print Word Error Rate (WER).'
                 },
                 {
+                    name: 'wil',
+                    alias: 'i',
+                    type: String,
+                    typeLabel: '[true|false]',
+                    description: 'Default: true. Print Word Information Loss (WIL).'
+                },
+                {
                     name: 'distance',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: false. Print total word distance after comparison.'
                 },
                 {
                     name: 'stats',
-                    alias: 'e',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: false. Print statistics about original and generate files, before and after pre-processing. ' +
                         'Also prints statistics about word level and phrase level differences.'
                 },
                 {
                     name: 'pairs',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: false. Print all the difference pairs with type of difference.'
                 },
                 {
                     name: 'textcomparison',
-                    alias: 'c',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: false. Print the text comparison between two files with highlighting.'
                 },
                 {
                     name: 'removespeakers',
-                    alias: 's',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: true. Remove the speaker at the start of each line in files before calculations. ' +
                         'The speaker should be separated by colon ":" i.e. {italic speaker_name}: {italic text} ' +
                         'For e.g. "John Doe: Hello, I am John." would get converted to simply "Hello, I am John."'
                 },
                 {
                     name: 'removeannotations',
-                    alias: 'a',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: true. Remove any custom annotations in the transcript before calculations. This is useful when removing custom annotations done by human transcribers. ' +
                         ' Anything in square brackets {italic []} are detected as annotations.' +
                         ' For e.g. "Hello, I am [inaudible 00:12] because of few reasons." would get converted to "Hello, I am because of few reasons." '
                 },
                 {
                     name: 'removewhitespaces',
-                    alias: 'w',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: true. Remove any extra white spaces before calculations.'
                 },
                 {
                     name: 'removequotes',
-                    alias: 'q',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: true. Remove any double quotes \'"\' from the files before calculations.'
                 },
                 {
                     name: 'removedashes',
-                    alias: 'd',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: true. Remove any dashes (hyphens) "-" from the files before calculations.'
                 },
                 {
                     name: 'removepunctuations',
-                    alias: 'p',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: true. Remove any punctuations ".,?!" from the files before calculations.'
                 },
                 {
                     name: 'lowercase',
-                    alias: 'l',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Default: true. Convert both files to lower case before calculations. ' +
                         'This is useful if evaluation needs to be done in case-insensitive way.'
                 },
                 {
                     name: 'help',
-                    alias: 'h',
-                    type: Boolean,
+                    type: String,
+                    typeLabel: '[true|false]',
                     description: 'Print this usage guide.'
                 }
             ]
@@ -150,20 +160,39 @@ const printUsage = (errors = []) => {
 const optionDefinitions = [
     { name: 'original', alias: 'o', type: String, multiple: false },
     { name: 'generated', alias: 'g', type: String, multiple: false },
-    { name: 'removespeakers', alias: 's', type: Boolean, defaultValue: true},
-    { name: 'removeannotations', alias: 'a', type: Boolean, defaultValue: true},
-    { name: 'removewhitespaces', alias: 'w', type: Boolean, defaultValue: true},
-    { name: 'removequotes', alias: 'q', type: Boolean, defaultValue: true},
-    { name: 'removedashes', alias: 'd', type: Boolean, defaultValue: true},
-    { name: 'removepunctuations', alias: 'p', type: Boolean, defaultValue: true},
-    { name: 'lowercase', alias: 'l', type: Boolean, defaultValue: true},
-    { name: 'wer', alias: 'e', type: Boolean, defaultValue: true},
-    { name: 'distance', type: Boolean, defaultValue: false},
-    { name: 'stats', alias: 't', type: Boolean, defaultValue: false},
-    { name: 'pairs', type: Boolean, defaultValue: false},
-    { name: 'textcomparison', alias: 'c', type: Boolean, defaultValue: false},
+    { name: 'removespeakers', alias: 's', type: String, defaultValue: 'true'},
+    { name: 'removeannotations', alias: 'a', type: String, defaultValue: 'true'},
+    { name: 'removewhitespaces', alias: 'w', type: String, defaultValue: 'true'},
+    { name: 'removequotes', alias: 'q', type: String, defaultValue: 'true'},
+    { name: 'removedashes', alias: 'd', type: String, defaultValue: 'true'},
+    { name: 'removepunctuations', alias: 'p', type: String, defaultValue: 'true'},
+    { name: 'lowercase', alias: 'l', type: String, defaultValue: 'true'},
+    { name: 'wer', alias: 'e', type: String, defaultValue: 'true'},
+    { name: 'wil', alias: 'i', type: String, defaultValue: 'true'},
+    { name: 'distance', type: String, defaultValue: 'false'},
+    { name: 'stats', alias: 't', type: String, defaultValue: 'false'},
+    { name: 'pairs', type: String, defaultValue: 'false'},
+    { name: 'textcomparison', alias: 'c', type: String, defaultValue: 'false'},
     { name: 'help', alias: 'h', type: Boolean}
 ];
+
+const parseBoolean = (string = '') => {
+    if (typeof string === 'boolean') return string;
+    else {
+        const _string = string.toLowerCase().trim();
+        if (_string === 'true') return true;
+        else if (_string === 'false') return false;
+        else return void 0;
+    }
+};
+
+const convertStringArgToBoolean = (string) => {
+    if (string === null || string === undefined) {
+        return true;
+    }
+    return parseBoolean(string);
+};
+
 try {
     const options = commandLineArgs(optionDefinitions);
 
@@ -194,20 +223,21 @@ try {
             printUsage(errors);
         } else {
             let result = calculateFromFile(original, generated, {
-                removeSpeakerStarters: options.removespeakers,
-                removeAnnotations: options.removeannotations,
-                removeExtraWhiteSpaces: options.removewhitespaces,
-                removeQuotes: options.removequotes,
-                removeDashes: options.removedashes,
-                removePunctuations: options.removepunctuations,
-                lowerCase: options.lowercase
+                removeSpeakerStarters: convertStringArgToBoolean(options.removespeakers),
+                removeAnnotations: convertStringArgToBoolean(options.removeannotations),
+                removeExtraWhiteSpaces: convertStringArgToBoolean(options.removewhitespaces),
+                removeQuotes: convertStringArgToBoolean(options.removequotes),
+                removeDashes: convertStringArgToBoolean(options.removedashes),
+                removePunctuations: convertStringArgToBoolean(options.removepunctuations),
+                lowerCase: convertStringArgToBoolean(options.lowercase)
             });
             printResult(result, {
-                wer: options.wer,
-                distance: options.distance,
-                stats: options.stats,
-                diffPairs: options.pairs,
-                textComparison: options.textcomparison
+                wer: convertStringArgToBoolean(options.wer),
+                wil: convertStringArgToBoolean(options.wil),
+                distance: convertStringArgToBoolean(options.distance),
+                stats: convertStringArgToBoolean(options.stats),
+                diffPairs: convertStringArgToBoolean(options.pairs),
+                textComparison: convertStringArgToBoolean(options.textcomparison)
             });
         }
     }
